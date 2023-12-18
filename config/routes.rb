@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :recipes
   end
 
-  root 'home#index'
+  root 'foods#index'
 end
