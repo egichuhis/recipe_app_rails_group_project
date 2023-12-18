@@ -30,8 +30,6 @@ gem 'active_model_serializers'
 
 gem 'bootstrap_form', '~> 5.4'
 
-gem 'letter_opener', '~> 1.4', '>= 1.4.1'
-
 gem 'cancancan'
 
 gem 'devise'
@@ -76,6 +74,8 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
   gem 'rubocop', '>= 1.0', '< 2.0'
+
+  gem 'letter_opener'
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
