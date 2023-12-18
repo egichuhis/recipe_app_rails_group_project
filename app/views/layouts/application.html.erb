@@ -2,10 +2,9 @@
 <html>
   <head>
     <title>RecipeAppRailsGroupProject</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -13,17 +12,31 @@
   <body>
 
     <% if user_signed_in? %>
-    <!-- Top-right section with User label and Logout button -->
-    <div class="container d-flex justify-content-between align-items-center">
-      <!-- User label -->
-      <div>
-        <p class="text-muted">Welcome, <%= @current_user.name %></p>
+    <div class="container">
+    <!-- Navbar with User label, Logout button, and Buttons -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+
+      <!-- Buttons -->
+      <div class="d-flex gap-4">
+        <button type="button" class="btn btn-primary mx-2">Recipes</button>
+        <button type="button" class="btn btn-primary mx-2">Foods</button>
+        <button type="button" class="btn btn-primary mx-2">My Recipes</button>
       </div>
 
-      <!-- Logout button -->
-      <div>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %>
+      <div class="d-flex gap-4">
+        <!-- User label -->
+        <p class="navbar-text text-muted mr-3">
+          Welcome, <%= @current_user.name %>
+        </p>
+
+        <!-- Logout button -->
+        <form class="form-inline my-2 mx-2">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %>
+        </form>
+
       </div>
+      
+    </nav>
     </div>
   <% end %>
 

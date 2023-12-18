@@ -2,19 +2,21 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: 654321
 
 development:
   <<: *default
-  database: recipe_app_development
+  database: recipe_app_rails_group_project_development
+  username: gich
+  password: root
 
 test:
   <<: *default
-  database: recipe_app_test
+  database: recipe_app_rails_group_project_test
+  username: gich
+  password: root
 
 production:
   <<: *default
-  database: recipe_app_production
-  username: recipe_app
-  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
+  database: recipe_app_rails_group_project_production
+  username: my_rails_blog
+  password: <%= ENV["MY_RAILS_BLOG_DATABASE_PASSWORD"] %>
