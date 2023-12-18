@@ -328,7 +328,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.4, >= 6.4.2)
   importmap-rails
   jbuilder
-  letter_opener (~> 1.4, >= 1.4.1)
+  letter_opener
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
