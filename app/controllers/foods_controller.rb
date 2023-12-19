@@ -9,18 +9,18 @@ class FoodsController < ApplicationController
   def show; end
 
   def new
-    @food= Food.build
+    @food = Food.build
   end
 
   def create
     @user = current_user
     @food = @user.foods.build(food_params)
     @food.user_id = @user.id
-  if @food.save
-    redirect_to foods_path(@user), notice: 'Food was successfully created.'
-  else
-    render :new, alert: 'Failed to create food.'
-  end
+    if @food.save
+      redirect_to foods_path(@user), notice: 'Food was successfully created.'
+    else
+      render :new, alert: 'Failed to create food.'
+    end
   end
 
   def destroy
