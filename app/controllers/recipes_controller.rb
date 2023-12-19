@@ -12,4 +12,8 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes.where(is_public: false)
     render 'private_recipes'
   end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
 end

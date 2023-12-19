@@ -11,12 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
-  # Change the root path to '/foods'
   root 'foods#index'
 
-  # Map '/public_recipes' to 'recipes#public_recipes'
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
 
-  # Map '/recipes' to 'recipes#private_recipes'
   get '/private_recipes', to: 'recipes#private_recipes', as: 'private_recipes'
+
+  # Map '/recipes/:id' to 'recipes#show'
+  resources :recipes, only: [:show]
 end
