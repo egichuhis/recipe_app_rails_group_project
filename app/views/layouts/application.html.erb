@@ -19,8 +19,8 @@
       <!-- Buttons -->
       <div class="d-flex gap-4">
   <%= link_to "Foods", foods_path, class: "btn btn-primary mx-2 #{params[:controller] == 'foods' ? 'active' : ''}" %>
-  <%= link_to "Public Recipes", public_recipes_path, class: "btn btn-primary mx-2 #{params[:controller] == 'recipes' && params[:action] == 'public_recipes' ? 'active' : ''}" %>
-  <%= link_to "Private Recipes", private_recipes_path, class: "btn btn-primary mx-2 #{params[:controller] == 'recipes' && params[:action] == 'private_recipes' ? 'active' : ''}" %>
+  <%= link_to "Public Recipes", recipes_path, class: "btn btn-primary mx-2 #{params[:controller] == 'recipes' && params[:action] == 'public_recipes' ? 'active' : ''}" %>
+  <%= link_to "My Recipes", my_recipes_path, class: "btn btn-primary mx-2 #{params[:controller] == 'recipes' && params[:action] == 'my_recipes' ? 'active' : ''}" %>
 </div>
 
 

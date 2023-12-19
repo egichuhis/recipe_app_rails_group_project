@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :recipes do
       collection do
         get 'public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
-        get 'private_recipes', to: 'recipes#private_recipes', as: 'private_recipes'
+        get 'my_recipes', to: 'recipes#my_recipes', as: 'my_recipes'
       end
     end
   end
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
 
-  get '/private_recipes', to: 'recipes#private_recipes', as: 'private_recipes'
+  get '/my_recipes', to: 'recipes#my_recipes', as: 'my_recipes'
 
   # Map '/recipes/:id' to 'recipes#show'
   resources :recipes, only: [:show]
