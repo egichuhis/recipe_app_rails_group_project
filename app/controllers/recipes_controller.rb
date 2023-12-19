@@ -1,7 +1,19 @@
+# app/controllers/recipes_controller.rb
+
 class RecipesController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @recipes = current_user.recipes
+  def public_recipes
+    @recipes = Recipe.where(is_public: true)
+    render 'public_recipes'
+  end
+
+  def private_recipes
+    @recipes = current_user.recipes.where(is_public: false)
+    render 'private_recipes'
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
   end
 end
