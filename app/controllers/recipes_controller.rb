@@ -42,6 +42,15 @@ class RecipesController < ApplicationController
     end
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe), notice: 'Recipe was successfully updated.'
+    else
+      render :edit, alert: 'Failed to update recipe.'
+    end
+  end
+
   private
 
   def recipe_params
