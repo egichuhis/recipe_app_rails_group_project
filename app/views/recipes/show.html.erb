@@ -13,10 +13,12 @@
       <label class="form-label fs-3 me-3 fw-bold mt-2">
         Is Public
       </label>
+      <% if @recipe.user == current_user %>
       <%= form_with(model: @recipe, url: recipe_path(@recipe), method: :patch) do |form| %>
         <div class="form-check fs-3">
           <%= form.check_box :is_public, class: 'form-check-input', onchange: 'this.form.submit()' %>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>
@@ -34,7 +36,7 @@
     </div>
     <% if @recipe.user == current_user %>
       <div class="col-md-6 d-flex justify-content-end">
-        <button class="btn btn-primary" type="button">Add ingredient</button>
+        <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn  btn-sm btn-primary' %>
       </div>
     <% end %>
   </div>
@@ -46,9 +48,8 @@
     <thead>
       <tr>
         <th>Food</th>
-        <th>Measurement Unit</th>
-        <th>Price</th>
         <th>Quantity</th>
+        <th>Value</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -56,9 +57,8 @@
       <% @recipe.foods.each do |food| %>
         <tr>
           <td><%= food.name %></td>
-          <td><%= food.measurement_unit %></td>
-          <td><%= food.price %></td>
           <td><%= food.quantity %></td>
+          <td><%= food.value %></td>          
           <td class="d-flex justify-content-between">
             <%= link_to 'Modify', edit_food_path(food) %>
             <%= link_to 'Remove', food_path(food), method: :delete, data: { confirm: 'Are you sure?' } %>

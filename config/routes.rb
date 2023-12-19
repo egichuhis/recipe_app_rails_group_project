@@ -19,4 +19,8 @@ Rails.application.routes.draw do
 
   # Map '/recipes/:id' to 'recipes#show'
   resources :recipes, only: [:show]
+
+  resources :recipes do
+    resources :recipe_foods, only: [:new, :create]
+  end
 end
