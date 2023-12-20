@@ -8,6 +8,6 @@ class Recipe < ApplicationRecord
   validates :preparation_time, :cooking_time, numericality: { only_integer: true }
 
   def total_price
-    foods.sum(:price)
+    recipe_foods.sum { |rf| rf.food.price * rf.quantity }
   end
 end
