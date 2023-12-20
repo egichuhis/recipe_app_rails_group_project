@@ -32,7 +32,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <button class="btn btn-primary" type="button">Generate Shopping List</button>
+        <%= link_to 'Generate Shopping List', shopping_list_recipe_path(@recipe), class: 'btn  btn-sm btn-primary' %>
     </div>
     <% if @recipe.user == current_user %>
       <div class="col-md-6 d-flex justify-content-end">
