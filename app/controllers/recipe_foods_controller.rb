@@ -3,23 +3,23 @@
 class RecipeFoodsController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipes_foods.new
+    @recipe_food = @recipe.recipe_foods.new
   end
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipes_foods.build(recipe_food_params)
+    @recipe_food = @recipe.recipe_foods.build(recipe_foods_params)
 
     if @recipe_food.save
       redirect_to @recipe, notice: 'Ingredient added successfully.'
     else
-      render 'recipes/add_ingredient'
+      render 'recipe_foods/new'
     end
   end
 
   private
 
-  def recipes_food_params
-    params.require(:recipe_food).permit(:food_id, :quantity)
+  def recipe_foods_params
+    params.require(:recipe_food).permit(:food_id, :quantity, recipe_foods: %i[food_id quantity])
   end
 end

@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :recipes_foods, inverse_of: :recipe, dependent: :destroy
-  has_many :foods, through: :recipes_foods
+  has_many :recipe_foods, inverse_of: :recipe, dependent: :destroy
+  has_many :foods, through: :recipe_foods
 
   validates :is_public, inclusion: { in: [true, false] }
   validates :name, :preparation_time, :cooking_time, presence: true
