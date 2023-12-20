@@ -60,8 +60,8 @@
           <td><%= food.quantity %></td>
           <td><%= food.value %></td>          
           <td class="d-flex justify-content-between">
-            <%= link_to 'Modify', edit_food_path(food) %>
-            <%= link_to 'Remove', food_path(food), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, food.recipe_foods.first) %>
+            <%= link_to 'Remove', recipe_recipe_food_path(@recipe, food.recipe_foods.first), method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
         </tr>
       <% end %>

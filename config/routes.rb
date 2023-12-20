@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         get 'public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
         get 'my_recipes', to: 'recipes#my_recipes', as: 'my_recipes'
       end
-      resources :recipe_foods, only: [:new, :create] # nested recipe_foods routes
+      resources :recipe_foods, only: [:new, :create, :destroy, :edit, :update]
     end
   end
 
