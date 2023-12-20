@@ -4,8 +4,4 @@ class Food < ApplicationRecord
 
   validates :name, :measurement_unit, :price, :quantity, presence: true
   validates :quantity, numericality: { only_integer: true }
-
-  def value
-    quantity * price
-  end
 end
