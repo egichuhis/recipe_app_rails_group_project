@@ -43,6 +43,8 @@
 </div>
 
 <hr />
+<!-- views/recipes/show.html.erb -->
+
 <div class="container table-responsive">
   <table class="table table-striped table-hover table-sm table-bordered">
     <thead>
@@ -54,17 +56,18 @@
       </tr>
     </thead>
     <tbody>
-      <% @recipe.foods.each do |food| %>
+      <% @recipe.recipe_foods.each do |recipe_food| %>
         <tr>
-          <td><%= food.name %></td>
-          <td><%= food.quantity %></td>
-          <td><%= food.value %></td>          
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td><%= recipe_food.value %></td>
           <td class="d-flex justify-content-between">
-            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, food.recipe_foods.first) %>
-            <%= link_to 'Remove', recipe_recipe_food_path(@recipe, food.recipe_foods.first), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, recipe_food) %>
+            <%= link_to 'Remove', recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+
