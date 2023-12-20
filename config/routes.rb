@@ -8,7 +8,12 @@ Rails.application.routes.draw do
         get 'public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
         get 'my_recipes', to: 'recipes#my_recipes', as: 'my_recipes'
       end
-      resources :recipe_foods, only: [:new, :create] # nested recipe_foods routes
+
+      member do
+        get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
+      end
+
+      resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
     end
   end
 
@@ -16,4 +21,5 @@ Rails.application.routes.draw do
 
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
   get '/my_recipes', to: 'recipes#my_recipes', as: 'my_recipes'
+  get '/shopping_list', to: 'shopping_list#general', as: 'general_shopping_list'
 end

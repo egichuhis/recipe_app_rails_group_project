@@ -51,6 +51,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def shopping_list
+    @recipe = Recipe.find(params[:id])
+  end
+
   private
 
   def recipe_params
