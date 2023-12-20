@@ -1,0 +1,42 @@
+<!-- views/recipes/new.html.erb -->
+
+<div class="container">
+  <h1>Add New Recipe</h1>
+
+  <%= form_with model: @recipe, url: recipes_path, include_hidden: false do |form| %>
+    <% if @recipe.errors.any? %>
+      <div>
+        <h2><%= pluralize(@recipe.errors.count, "error") %> Recipe cannot be saved:</h2>
+        <ul>
+          <% @recipe.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="d-flex flex-column">
+      <div>
+        <%= form.label :name %><br>
+        <%= form.text_field :name, class: 'form-control', required: true %>
+      </div>
+      <div>
+        <%= form.label :preparation_time %><br>
+        <%= form.number_field :preparation_time, class: 'form-control', required: true %>
+      </div>
+      <div>
+        <%= form.label :cooking_time %><br>
+        <%= form.number_field :cooking_time, class: 'form-control', required: true %>
+      </div>
+      <div>
+        <%= form.label :description %><br>
+        <%= form.text_area :description, class: 'form-control', required: true %>
+      </div>
+      <div>
+        <%= form.label :is_public %><br>
+        <%= form.check_box :is_public %>
+      </div>
+      <%= form.submit "Create Recipe", class: "btn btn-outline-success" %>
+    </div>
+  <% end %>
+</div>

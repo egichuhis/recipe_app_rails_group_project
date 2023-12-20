@@ -6,17 +6,14 @@ Rails.application.routes.draw do
     resources :recipes do
       collection do
         get 'public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
-        get 'private_recipes', to: 'recipes#private_recipes', as: 'private_recipes'
+        get 'my_recipes', to: 'recipes#my_recipes', as: 'my_recipes'
       end
+      resources :recipe_foods, only: [:new, :create] # nested recipe_foods routes
     end
   end
 
   root 'foods#index'
 
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
-
-  get '/private_recipes', to: 'recipes#private_recipes', as: 'private_recipes'
-
-  # Map '/recipes/:id' to 'recipes#show'
-  resources :recipes, only: [:show]
+  get '/my_recipes', to: 'recipes#my_recipes', as: 'my_recipes'
 end

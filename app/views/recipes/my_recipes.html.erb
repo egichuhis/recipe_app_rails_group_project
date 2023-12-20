@@ -1,0 +1,19 @@
+<!-- views/recipes/my_recipes.html.erb -->
+
+<div class="container d-flex flex-column gap-4">
+  <h1 class="text-center">My Recipes</h1>
+  <% @recipes.each do |recipe| %>
+    <div class="row" style="border-style: solid;">
+      <div class="col-md-6 d-flex flex-column justify-content-between">
+        <%= link_to recipe_path(recipe) do %>
+        <h3><%= recipe.name %></h3>
+        <% end %>
+        <!-- Add the "REMOVE" button with a link to delete the recipe -->
+        <%= link_to 'REMOVE', recipe_path(recipe), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger w-25 mb-1' %>
+      </div>
+      <div class="col-md-6">
+        <p><strong><%= recipe.description %></strong></p>
+      </div>
+    </div>
+  <% end %>
+</div>
