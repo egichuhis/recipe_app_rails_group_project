@@ -1,6 +1,3 @@
-# spec/views/recipe_foods/edit.html.erb_spec.rb
-require 'rails_helper'
-
 RSpec.describe 'recipe_foods/edit.html.erb', type: :view do
   let(:user) do
     User.create!(id: 1,
@@ -26,8 +23,9 @@ RSpec.describe 'recipe_foods/edit.html.erb', type: :view do
   end
   # Assuming you have a factory for RecipeFood model
   let(:recipe_food) do
-    Recipe_food.create(:recipe_food, recipe:, food:, quantity: 10)
+    RecipeFood.create(recipe: recipe, food: food, quantity: 10)
   end
+
   before do
     assign(:recipe, recipe)
     assign(:recipe_food, recipe_food)
