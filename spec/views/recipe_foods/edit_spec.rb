@@ -23,7 +23,7 @@ RSpec.describe 'recipe_foods/edit.html.erb', type: :view do
   end
   # Assuming you have a factory for RecipeFood model
   let(:recipe_food) do
-    RecipeFood.create(recipe: recipe, food: food, quantity: 10)
+    RecipeFood.create(recipe:, food:, quantity: 10)
   end
 
   before do
