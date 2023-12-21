@@ -1,6 +1,6 @@
 <!-- views/recipe_foods/edit.html.erb -->
 
-<div class="container">
+<div class="container w-75">
   <h1 class="text-center">Modify Ingredient in <%= @recipe.name %></h1>
 
   <%= form_with(model: [@recipe, @recipe_food], url: recipe_recipe_food_path(@recipe, @recipe_food), method: :patch, local: true) do |form| %>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="d-flex justify-content-center">
-      <%= form.submit 'Modify Ingredient', class: 'btn btn-sm btn-primary' %>
+      <%= form.submit 'Modify Ingredient', class: 'btn btn-sm btn-outline-success w-100' %>
     </div>
   <% end %>
 </div>

@@ -4,7 +4,7 @@
   
  <h1 class="text-center h1">Foods page</h3>
  <div class="container d-flex justify-content-end pe-5 mb-2">
-  <%= button_to "Add Food", new_food_path, method: :get, class: "btn btn-sm btn-outline-info"  if @user.id == current_user.id%>
+  <%= button_to "Add Food", new_food_path, method: :get, class: "btn btn-sm btn-outline-secondary"  if @user.id == current_user.id%>
  </div>
  <table class="table table-striped">
  <% if @foods.present? %>
