@@ -24,9 +24,8 @@ RSpec.describe 'recipe_foods/edit.html.erb', type: :view do
                   preparation_time: 40,
                   is_public: true)
   end
-  # Assuming you have a factory for RecipeFood model
   let(:recipe_food) do
-    Recipe_food.create(:recipe_food, recipe:, food:, quantity: 10)
+    RecipeFood.create(recipe:, food:, quantity: 10)
   end
   before do
     assign(:recipe, recipe)
@@ -36,11 +35,9 @@ RSpec.describe 'recipe_foods/edit.html.erb', type: :view do
   end
 
   it 'renders the form' do
-    expect(rendered).to have_selector("form[action='#{recipe_recipe_food_path(recipe, recipe_food)}'][method='post']") # Assuming the method is post in your case
+    expect(rendered).to have_selector("form[action='#{recipe_recipe_food_path(recipe, recipe_food)}'][method='post']")
     expect(rendered).to have_field('recipe_food[food_id]', type: 'select', with: recipe_food.food_id)
     expect(rendered).to have_field('recipe_food[quantity]', type: 'number', with: recipe_food.quantity)
     expect(rendered).to have_button('Modify Ingredient')
   end
-
-  # Add more tests as needed to cover form submission and other scenarios
 end
