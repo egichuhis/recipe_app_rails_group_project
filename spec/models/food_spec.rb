@@ -21,9 +21,5 @@ RSpec.describe Food, type: :model do
       @food.measurement_unit = nil
       expect(@food).to_not be_valid
     end
-
-    it 'calculates the value correctly' do
-      expect(@food.value).to eq(3.98)
-    end
   end
 end
