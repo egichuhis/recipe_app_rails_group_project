@@ -16,21 +16,20 @@ class ShoppingListController < ApplicationController
     user_foods = user.foods.to_a
 
     # Find all foods associated with the user's recipes
-    recipe_foods = Recipe.joins(:recipe_foods).where(recipe_foods: { food: user_foods })
+    recipe_foods = RecipeFood.joins(:food, :recipe).where(foods: { user_id: user.id })
 
     # Identify deficit items
     deficit_items = []
-    recipe_foods.each do |recipe|
-      recipe.recipe_foods.each do |rf|
-        user_food = user_foods.find { |uf| uf == rf.food }
-        deficit_items << user_food if user_food.quantity < rf.quantity
-      end
+    recipe_foods.each do |rf|
+      user_food = user_foods.find { |uf| uf == rf.food }
+      deficit_quantity = [rf.quantity - user_food.quantity, 0].max
+      deficit_items << { food: user_food, deficit_quantity: } if deficit_quantity.positive?
     end
 
     deficit_items
   end
 
   def calculate_total_price(missing_foods)
-    missing_foods.sum(&:price)
+    missing_foods.sum { |item| item[:food].price * item[:deficit_quantity] }
   end
 end
