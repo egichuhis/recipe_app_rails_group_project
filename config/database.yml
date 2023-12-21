@@ -6,14 +6,13 @@ default: &default
 development:
   <<: *default
   database: recipe_app_rails_group_project_development
-  username: gich
-  password: root
-
+  username: postgres
+  password: 654321 
 test:
   <<: *default
   database: recipe_app_rails_group_project_test
-  username: gich
-  password: root
+  username: postgres
+  password: 654321 
 
 production:
   <<: *default
