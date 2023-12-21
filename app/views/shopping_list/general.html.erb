@@ -14,13 +14,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @missing_foods.each do |food| %>
-        <tr>
-          <td><%= food.name %></td>
-          <td><%= food.quantity %> <%= food.measurement_unit %></td>
-          <td>$<%= food.price %></td>
-        </tr>
-      <% end %>
-    </tbody>
+  <% @missing_foods.each do |deficit_item| %>
+    <tr>
+      <td><%= deficit_item[:food].name %></td>
+      <td><%= deficit_item[:deficit_quantity] %> <%= deficit_item[:food].measurement_unit %></td>
+      <td>$<%= deficit_item[:food].price %></td>
+    </tr>
+  <% end %>
+</tbody>
   </table>
 </div>
