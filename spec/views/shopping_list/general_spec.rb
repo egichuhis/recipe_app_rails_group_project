@@ -5,8 +5,8 @@ RSpec.describe 'shopping_list/general.html.erb', type: :view do
     assign(:total_items, 10)
     assign(:general_total_price, 50.0)
     assign(:missing_foods, [
-      { food: Food.new(name: 'Apple', measurement_unit: 'Pieces', price: 1.5), deficit_quantity: 5 },
-    ])
+             { food: Food.new(name: 'Apple', measurement_unit: 'Pieces', price: 1.5), deficit_quantity: 5 }
+           ])
 
     render
   end
@@ -28,7 +28,7 @@ RSpec.describe 'shopping_list/general.html.erb', type: :view do
     expect(rendered).to have_selector('th', text: 'Food')
     expect(rendered).to have_selector('th', text: 'Quantity')
     expect(rendered).to have_selector('th', text: 'Price')
-    expect(rendered).to have_selector('tr', count: 2) 
+    expect(rendered).to have_selector('tr', count: 2)
     expect(rendered).to have_selector('td', text: 'Apple')
     expect(rendered).to have_selector('td', text: '5 Pieces')
     expect(rendered).to have_selector('td', text: '$1.5')

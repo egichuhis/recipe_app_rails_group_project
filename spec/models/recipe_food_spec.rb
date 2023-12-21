@@ -48,7 +48,7 @@ RSpec.describe RecipeFood, type: :model do
     end
 
     it 'calculates the value' do
-      recipe_food = RecipeFood.new(recipe_id: recipe.id, food_id:food.id, quantity: 2 , value: 0)
+      recipe_food = RecipeFood.new(recipe_id: recipe.id, food_id: food.id, quantity: 2, value: 0)
       expect(recipe_food.value).to eq(0)
       recipe_food.calculate_value
       expect(recipe_food.value).to eq(36.0)
@@ -65,7 +65,5 @@ RSpec.describe RecipeFood, type: :model do
       temp = RecipeFood.reflect_on_association(:food)
       expect(temp.macro).to eq(:belongs_to)
     end
-    
-   
   end
 end
