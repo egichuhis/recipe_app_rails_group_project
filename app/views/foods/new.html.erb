@@ -1,37 +1,37 @@
 <!-- views/foods/new.html.erb -->
 
-<div class="container">
+<div class="container w-75">
 <h4> Add new food</h4>
 
 <%= form_with model: @food, url: foods_path do |form| %>
-<% if @food.errors.any? %>
- <div>
-    <h2><%= pluralize(food.errors.count, "error") %> Food cannot be saved:</h2>
-        <ul>
-           <% food.errors.each do |error| %>
-           <li><%= error.full_message %></li>
-           <% end %>
-        </ul>
+  <% if @food.errors.any? %>
+  <div>
+      <h2><%= pluralize(food.errors.count, "error") %> Food cannot be saved:</h2>
+          <ul>
+            <% food.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
   </div>
-<% end %>
+  <% end %>
   <div class="d-flex flex-column">
-  <div>
-    <%= form.label :name%><br>
-    <%= form.text_field :name, class: 'form-control', required: true%>
-  </div>
-  <div>
-    <%= form.label :measurement_unit %><br>
-    <%= form.select :measurement_unit, options_for_select(['Pieces', 'Grams', 'kg', 'Dozen','Liters']), { prompt: 'Select a category...' }, class: 'form-control' %>
-  </div>
-  <div>
-  <%= form.label :price%><br>
-    <%= form.number_field :price, class: 'form-control', required: true%>
-  </div>
-  <div>
-   <%= form.label :quantity %><br>
-    <%= form.number_field :quantity, class: 'form-control', required: true%>
-  </div>
-   <%=form.submit "Create food", class: "btn btn-outline-success"%>
+    <div>
+      <%= form.label :name%><br>
+      <%= form.text_field :name, class: 'form-control', required: true%>
+    </div>
+    <div>
+      <%= form.label :measurement_unit %><br>
+      <%= form.select :measurement_unit, options_for_select(['Pieces', 'Grams', 'kg', 'Dozen','Liters']), { prompt: 'Select a category...' }, class: 'form-control' %>
+    </div>
+    <div>
+      <%= form.label :price%><br>
+      <%= form.number_field :price, class: 'form-control', required: true%>
+    </div>
+    <div>
+      <%= form.label :quantity %><br>
+      <%= form.number_field :quantity, class: 'form-control', required: true%>
+    </div>
+    <%=form.submit "Create food", class: "btn btn-outline-success mt-5"%>
   </div>
   </div>
  <%end%>

@@ -46,6 +46,13 @@ RSpec.describe RecipeFood, type: :model do
       recipe_food = described_class.new(food:, quantity: 2)
       expect(recipe_food).not_to be_valid
     end
+
+    it 'calculates the value' do
+      recipe_food = RecipeFood.new(recipe_id: recipe.id, food_id: food.id, quantity: 2, value: 0)
+      expect(recipe_food.value).to eq(0)
+      recipe_food.calculate_value
+      expect(recipe_food.value).to eq(36.0)
+    end
   end
 
   context 'associations' do

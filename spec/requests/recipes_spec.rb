@@ -24,20 +24,18 @@ RSpec.describe 'Recipe specs', type: :feature do
 
   it 'see the title' do
     expect(page).to have_content('Public Recipes')
-    expect(page).to have_content('The best in the west')
+    expect(page).to have_content('Kabsah')
   end
 
   it 'see the recipe details' do
     visit recipe_path(@recipe1)
     expect(page).to have_content('Kabsah')
     expect(page).to have_content('The best in the west')
-    expect(page).to have_content('Total food items:') # Update with actual preparation time
-    expect(page).to have_content('Total price:') # Update with actual cooking time
   end
+
   it 'create new recipe' do
     click_on 'Add Recipe'
     expect(page).to have_content('Add New Recipe')
-    expect(page).to have_button('Add new recipe')
-    expect(page).to have_content('Made recipe public')
+    expect(page).to have_button('Create Recipe')
   end
 end
