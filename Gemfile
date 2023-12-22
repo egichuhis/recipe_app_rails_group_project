@@ -34,10 +34,6 @@ gem 'cancancan'
 
 gem 'devise'
 
-gem 'cssbundling-rails'
-
-gem 'sassc-rails'
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
