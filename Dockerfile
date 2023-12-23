@@ -46,8 +46,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 COPY master.key /rails/config/master.key
 
 # Precompiling assets for production using the Rails master key
-RUN RAILS_MASTER_KEY=76291e85dafe07c1b23b4780c2c0d455 ./bin/rails assets:precompile
-
+RUN ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
