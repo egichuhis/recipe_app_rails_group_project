@@ -6,9 +6,13 @@ services:
       - "3000:3000"
     depends_on:
       - db
-  db:
-    image: postgres:12
     environment:
-      POSTGRES_DB: your_database_name
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
+      DATABASE_URL: "postgres://foods_and_recipes_user:giApCJKqeYI6zgAyxrMeeuA99RaE3clw@dpg-cm2aa821hbls73eov3t0-a/foods_and_recipes"
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: foods_and_recipes
+      POSTGRES_USER: foods_and_recipes_user
+      POSTGRES_PASSWORD: giApCJKqeYI6zgAyxrMeeuA99RaE3clw
+      PGDATA: /var/lib/postgresql/data/pgdata
