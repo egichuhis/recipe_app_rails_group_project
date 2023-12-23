@@ -17,6 +17,8 @@ test:
 
 production:
   <<: *default
-  database: recipe_app_rails_group_project_production
-  username: my_rails_blog
-  password: <%= ENV["MY_RAILS_BLOG_DATABASE_PASSWORD"] %>
+  database: foods_and_recipes
+  username: foods_and_recipes_user
+  password: giApCJKqeYI6zgAyxrMeeuA99RaE3clw
+  host: dpg-cm2aa821hbls73eov3t0-a
+  port: 5432
