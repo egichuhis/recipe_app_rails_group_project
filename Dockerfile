@@ -21,6 +21,15 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 
+# Install curl and other dependencies
+RUN apt-get update -qq && apt-get install -y curl libvips postgresql-client
+
+# Install Node.js and Yarn
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install -y nodejs yarn
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
@@ -33,8 +42,11 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Copy the Rails master key into the image
+COPY master.key /rails/config/master.key
+
+# Precompiling assets for production using the Rails master key
+RUN RAILS_MASTER_KEY=76291e85dafe07c1b23b4780c2c0d455 ./bin/rails assets:precompile
 
 
 # Final stage for app image
